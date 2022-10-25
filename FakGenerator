@@ -3,8 +3,9 @@ from IPython.display import display, Latex
 from time import sleep
 primes=[2,3,5,7]
 length=rd.choice(range(5,10))
-timer=300
-timer_interval=1
+timer=300000
+
+timer_interval=1000
 
 i=0
 number=1
@@ -22,9 +23,9 @@ print(number)
 for i in primes:
     decomp=decomp+str(i)+"^"+str(factors.count(i))+"*"
 
-for i in range(timer):
+for i in range(int(timer/timer_interval)):
     sleep(timer_interval)
-    print(str(timer-i)+"s lasting",end="\r")
+    print(str(timer-i*timer_interval)+"s lasting",end="\r")
 print("                            ",end="\r")
 print("Times up")
 display(Latex(f'{number}=${decomp[0:-1]}$'))
